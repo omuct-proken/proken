@@ -731,10 +731,12 @@ body {
         }
     }
 
- /* 活動フロー */
+/* 活動フロー */
 .flow {
     padding: 5rem 2rem;
     background: var(--background-color);
+    position: relative;
+    width: 100%;
 }
 
 .flow-container {
@@ -745,17 +747,19 @@ body {
     gap: 2rem;
     padding: 2rem 0;
     position: relative;
+    z-index: 1;
 }
 
-.flow-container::before {
+/* 横線の実装方法を変更 */
+.flow-container::after {
     content: '';
     position: absolute;
     top: 100px;
-    left: 0;
-    right: 0;
+    left: 10%;
+    right: 10%;
     height: 2px;
     background: var(--secondary-color);
-    z-index: 1;
+    opacity: 0.5;
 }
 
 .flow-card {
@@ -767,10 +771,12 @@ body {
     position: relative;
     z-index: 2;
     transition: transform 0.3s ease;
+    background-color: #ffffff; /* 明示的に背景色を指定 */
 }
 
 .flow-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .flow-step {
@@ -780,10 +786,12 @@ body {
     transform: translateX(-50%);
     background: var(--secondary-color);
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 20px;
     font-weight: bold;
     font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 3;
 }
 
 .flow-icon {
@@ -806,20 +814,40 @@ body {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .flow-card p {
     color: var(--text-color);
     font-size: 0.95rem;
     line-height: 1.6;
+    margin: 0;
+}
+
+/* レスポンシブ対応の改善 */
+@media (max-width: 1024px) {
+    .flow-container::after {
+        left: 5%;
+        right: 5%;
+    }
 }
 
 @media (max-width: 768px) {
-    .flow-container::before {
+    .flow-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .flow-container::after {
         display: none;
     }
     
     .flow-card {
-        margin-top: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .flow-step {
+        font-size: 0.85rem;
+        padding: 0.4rem 1.2rem;
     }
 }
