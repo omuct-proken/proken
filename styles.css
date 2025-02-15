@@ -23,8 +23,27 @@ body {
 }
 
 .container {
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1400px) {
+    .container {
+        width: 85%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
 }
 
 /* カスタムカーソル */
@@ -195,7 +214,7 @@ body {
 
 /* 大会成績セクション */
 .results {
-    padding: 5rem 2rem;
+    /* padding: 5rem 2rem; */
     background: var(--background-color);
 }
 
@@ -462,7 +481,7 @@ body {
 /* 活動内容セクション */
 .activities {
     background: var(--background-color);
-    padding: 5rem 2rem;
+    padding-right: 1rem;
 }
 
 .activities-container {
