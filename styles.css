@@ -735,8 +735,6 @@ body {
 .flow {
     padding: 5rem 2rem;
     background: var(--background-color);
-    position: relative;
-    width: 100%;
 }
 
 .flow-container {
@@ -747,19 +745,18 @@ body {
     gap: 2rem;
     padding: 2rem 0;
     position: relative;
-    z-index: 1;
 }
 
-/* 横線の実装方法を変更 */
-.flow-container::after {
+.flow-container::before {
     content: '';
     position: absolute;
-    top: 100px;
+    top: 120px;
     left: 10%;
     right: 10%;
-    height: 2px;
+    height: 3px;
     background: var(--secondary-color);
-    opacity: 0.5;
+    z-index: 1;
+    opacity: 0.3;
 }
 
 .flow-card {
@@ -771,7 +768,6 @@ body {
     position: relative;
     z-index: 2;
     transition: transform 0.3s ease;
-    background-color: #ffffff; /* 明示的に背景色を指定 */
 }
 
 .flow-card:hover {
@@ -791,7 +787,6 @@ body {
     font-weight: bold;
     font-size: 0.9rem;
     white-space: nowrap;
-    z-index: 3;
 }
 
 .flow-icon {
@@ -814,22 +809,12 @@ body {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-size: 1.2rem;
-    font-weight: bold;
 }
 
 .flow-card p {
     color: var(--text-color);
     font-size: 0.95rem;
     line-height: 1.6;
-    margin: 0;
-}
-
-/* レスポンシブ対応の改善 */
-@media (max-width: 1024px) {
-    .flow-container::after {
-        left: 5%;
-        right: 5%;
-    }
 }
 
 @media (max-width: 768px) {
@@ -838,16 +823,11 @@ body {
         gap: 3rem;
     }
     
-    .flow-container::after {
+    .flow-container::before {
         display: none;
     }
     
     .flow-card {
-        margin: 0 1rem;
-    }
-    
-    .flow-step {
-        font-size: 0.85rem;
-        padding: 0.4rem 1.2rem;
+        margin: 0;
     }
 }
