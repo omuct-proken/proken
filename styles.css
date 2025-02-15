@@ -730,3 +730,96 @@ body {
             transition: none !important;
         }
     }
+
+    /* 活動フロー */
+.flow {
+    padding: 5rem 2rem;
+    background: var(--background-color);
+}
+
+.flow-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.flow-container::before {
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    z-index: 1;
+}
+
+.flow-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.flow-card:hover {
+    transform: translateY(-5px);
+}
+
+.flow-step {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.flow-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem auto;
+}
+
+.flow-icon i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.flow-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.flow-card p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .flow-container::before {
+        display: none;
+    }
+    
+    .flow-card {
+        margin-top: 2rem;
+    }
+}
